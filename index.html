@@ -32,21 +32,60 @@
   </header>
   <!--Formulario de alta de notas-->
   <section>
-    <form class="card p-5" style="max-width: 500px;">
+    <form onsubmit="agregarNota(event)" class="card p-5" style="max-width: 500px;">
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="floatingInput" placeholder="Asunto">
+      <input type="text" class="form-control" id="categoria" placeholder="Asunto">
       <label for="floatingInput">Categoria</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingPassword" placeholder="Descripción de la nota">
+      <input type="text" class="form-control" id="descripcion" placeholder="Descripción de la nota">
       <label for="floatingPassword">Descripción de la nota</label>
     </div>
+    <button class="btn btn-success">Agregar Nota</button>
   </form>
 
   </section>
 <!--Tabla de notas-->
   <section>
+    <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">categoria</th>
+            <th scope="col">descripcion</th>
+            <th scope="col">Modificar</th>
 
+          </tr>
+
+        </thead>
+        <tbody id="contenidoTabla">
+
+          <!--
+
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td><button class="btn btn-warning">Editar</button></td>
+
+            
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td><button class="btn btn-warning">Editar</button></td>
+
+            
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry the Bird</td>
+            <td><button class="btn btn-warning">Editar</button></td>
+            
+          </tr> 
+        -->
+        </tbody>
+
+
+    </table>
   </section>
 </main>
 
