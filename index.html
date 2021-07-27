@@ -39,11 +39,11 @@
     <section>
       <form onsubmit="AgregarNota(event)" class="card p-5" style="max-width: 500px;">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="categoria" placeholder="name@example.com">
+          <input maxlength="60" type="text" class="form-control" id="categoria" placeholder="name@example.com">
           <label for="floatingInput">Categoría</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="descripcion" placeholder="Password">
+          <input maxlength="500" type="text" class="form-control" id="descripcion" placeholder="Password">
           <label for="floatingPassword">Descripción</label>
         </div>
         <button class="btn btn-success">Agregar Nota</button>
@@ -156,6 +156,7 @@
 
 
   <script src="./desafio.js"></script>
+  <script src="busqueda.js"></script>
 </body>
 
 </html>
