@@ -1,16 +1,19 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<!--Inicio Navbar-->
-<nav class="navbar navbar-dark bg-dark">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Inicio Navbar-->
+
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand">Notas Personales</a>
       <form class="d-flex">
@@ -20,80 +23,139 @@
     </div>
   </nav>
 
+  <!-- Inicio Navbar-->
 
-<!--Fin del Navbar-->
+  <title>Notas</title>
+</head>
 
-    <title>Notas</title>
-  </head>
-  <body>
-<main>
-  <header>
-    <h1>Mis Notas Personales</h1>
-  </header>
-  <!--Formulario de alta de notas-->
-  <section>
-    <form onsubmit="agregarNota(event)" class="card p-5" style="max-width: 500px;">
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="categoria" placeholder="Asunto">
-      <label for="floatingInput">Categoria</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="descripcion" placeholder="Descripción de la nota">
-      <label for="floatingPassword">Descripción de la nota</label>
-    </div>
-    <button class="btn btn-success">Agregar Nota</button>
-  </form>
+<body>
 
-  </section>
-<!--Tabla de notas-->
-  <section>
-    <table class="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th scope="col">categoria</th>
-            <th scope="col">descripcion</th>
-            <th scope="col">Modificar</th>
+  <Main>
+    <Header>
+      <h1>Mis notas personales</h1>
+    </Header>
 
-          </tr>
+    <!--Formulario de alta de notas-->
+    <section>
+      <form onsubmit="AgregarNota(event)" class="card p-5" style="max-width: 500px;">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="categoria" placeholder="name@example.com">
+          <label for="floatingInput">Categoría</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="descripcion" placeholder="Password">
+          <label for="floatingPassword">Descripción</label>
+        </div>
+        <button class="btn btn-success">Agregar Nota</button>
+      </form>
+    </section>
 
-        </thead>
-        <tbody id="contenidoTabla">
+    </form>
+    <section class="my-5">
 
-          <!--
+      <!-- Formulario de búsqueda de notas -->
+      <form onsubmit="buscarnotas(event)" class="my-3">
+        <label for="busqueda">Buscar por categoria</label>
+        <input id="busqueda" type="text">
+        <button type="submit">Buscar</button>
+        <button type="button">Limpiar</button>
+      </form>
 
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td><button class="btn btn-warning">Editar</button></td>
+      <!--Seccion tabla de notas-->
+      <section>
+        <table class="table table-dark table-striped">
 
-            
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td><button class="btn btn-warning">Editar</button></td>
+          <thead>
+            <tr>
+              <th scope="col">Categoría</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Modificar</th>
 
-            
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td><button class="btn btn-warning">Editar</button></td>
-            
-          </tr> 
-        -->
-        </tbody>
+            </tr>
+          </thead>
+          <tbody id="contenidoTabla">
+
+            <!--
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td><button class="btn btn-warning">Editar</button></td>
+
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td><button class="btn btn-warning">Editar</button></td>
+
+            -->
+          </tbody>
+
+        </table>
+      </section>
+  </Main>
 
 
-    </table>
-  </section>
-</main>
+   <!-- Modal detalle de nota -->
+   <div class="modal fade" id="modalDetalleNota" tabindex="-1" aria-labelledby="exampleModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Info de nota</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div id="detalleNotaDiv" class="modal-body">
+               <!-- <p>Nombre: </p>
+               <p>Correo: </p>
+               <p>Rol: </p>
+               <p>Fecha de registro: </p> -->
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- Modal editar nota -->
+<div class="modal fade" id="modalEditarNota" tabindex="-1" aria-labelledby="exampleModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog">
+       <form onsubmit="editarNota(event)" class="p-5" style="max-width: 500px;">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLabel">Edición de nota</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body p-4">
+                   <!-- Formulario editar nota -->
+                   <div class="form-floating mb-3">
+                       <input type="text" class="form-control" id="categoriaEditado" placeholder="Una categoria">
+                       <label for="categoriaEditado">Categoría</label>
+                   </div>
+                   <div class="form-floating mb-3">
+                       <input type="text" class="form-control" id="descripcionEditado" placeholder="Descripcion de nota">
+                       <label for="descripcionEditado">Descripción</label>
+                   </div>
+               </div>
+               <div class="modal-footer">
+                   <button class="btn btn-primary">Editar nota</button>
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+               </div>
+           </div>
+       </form>
+   </div>
+</div>
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="desafio.js"></script>  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+  <script src="./desafio.js"></script>
 </body>
+
 </html>
